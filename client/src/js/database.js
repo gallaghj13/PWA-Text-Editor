@@ -1,4 +1,5 @@
 import { openDB } from 'idb';
+import { ids } from 'webpack';
 
 const initdb = async () =>
   openDB('jate', 1, {
@@ -18,7 +19,7 @@ export const putDb = async (content) => {
   const jateDb = await openDB('jate', 1);
   const tx = jateDb.transaction('jate', 'readwrite');
   const store = tx.objectStore('jate');
-  const request = store.put(content, id);
+  const request = store.put({ key: id, value: content});
   const result = await request;
   console.log('result.value', result);
   if(!result) {
