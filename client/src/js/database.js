@@ -7,7 +7,7 @@ const initdb = async () =>
         console.log('jate database already exists');
         return;
       }
-      db.createObjectStore('jate', { keyPath: 'id', autoIncrement: true });
+      db.createObjectStore('jate', { keyPath: 'id', autoIncrement: false });
       console.log('jate database created');
     },
   });
@@ -21,7 +21,7 @@ export const putDb = async (content) => {
   const request = store.put(content);
   const result = await request;
   console.log('result.value', result);
-  if(result == undefined) {
+  if(!result) {
     console.error('putDb not implemented');
   } else {
     return result;
@@ -37,7 +37,7 @@ export const getDb = async () => {
   const request = store.getAll();
   const result = await request;
   console.log('result.value', result);
-  if(result == undefined) {
+  if(!result) {
     console.error('getDb not implemented');
   } else {
     return result;
