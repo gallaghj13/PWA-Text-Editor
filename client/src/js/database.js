@@ -40,7 +40,7 @@ export const getDb = async () => {
   if(!result) {
     console.error('getDb not implemented');
   } else {
-    return result;
+    return result.value;
   }
   
 }
